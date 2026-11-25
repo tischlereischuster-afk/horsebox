@@ -132,12 +132,12 @@ textarea { min-height: 90px; }
 .topbar { flex-wrap: wrap; }
 
 /* Anmeldeseite */
-.auth-wrap { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 16px; background: linear-gradient(180deg, var(--hero-bg) 0, var(--hero-bg) 38%, var(--bg) 38%); }
-.auth-logo { text-align: center; color: var(--hero-text); margin-bottom: 20px; }
+.auth-wrap { min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 0 0 32px; background: var(--bg); }
+.auth-logo { display: block; width: 100%; text-align: center; color: var(--hero-text); background: var(--hero-bg); padding: 56px 16px 84px; }
 .auth-logo .icon { width: 72px; height: 72px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 38px; background: var(--card); border: 3px solid var(--accent); box-shadow: 0 6px 20px rgba(0,0,0,.18); }
 .auth-logo h1 { margin: 12px 0 2px; font-size: 1.8rem; color: var(--hero-text); }
 .auth-logo p { margin: 0; opacity: .85; font-size: .95rem; }
-.auth-card { width: 100%; max-width: 400px; background: var(--card); border-radius: var(--radius); padding: 24px 20px; box-shadow: 0 10px 30px rgba(0,0,0,.12); border: 1px solid var(--line); }
+.auth-card { width: calc(100% - 32px); max-width: 400px; margin-top: -56px; background: var(--card); border-radius: var(--radius); padding: 24px 20px; box-shadow: 0 10px 30px rgba(0,0,0,.12); border: 1px solid var(--line); }
 .auth-tabs { display: grid; grid-template-columns: 1fr 1fr; background: var(--surface-2); border-radius: var(--radius-sm); padding: 4px; margin-bottom: 18px; }
 .auth-tabs button { border: 0; background: transparent; padding: 9px; border-radius: 8px; font: inherit; font-weight: 600; color: var(--muted); cursor: pointer; }
 .auth-tabs button.active { background: var(--card); color: var(--text); box-shadow: 0 1px 4px rgba(0,0,0,.1); }
