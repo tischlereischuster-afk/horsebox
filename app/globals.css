@@ -1,0 +1,169 @@
+/* ===== Design-Variablen =====
+   Standard = Design "stall". Die anderen Designs überschreiben nur die Variablen.
+   Welches Design aktiv ist, steht im <html data-design="..."> (siehe lib/design.ts). */
+:root {
+  --bg: #f6f3ee;
+  --card: #ffffff;
+  --surface-2: #f6f3ee;      /* Kästchen in Karten (Steckbrief, Abstammung) */
+  --input-bg: #ffffff;
+  --text: #1f2722;
+  --muted: #6b726d;
+  --line: #e3ddd3;
+  --brand: #2f4a3a;          /* Hauptfarbe: Knöpfe, Kopfzeile */
+  --brand-2: #46694f;        /* Knopf beim Drüberfahren */
+  --on-brand: #ffffff;       /* Schrift auf Hauptfarbe */
+  --accent: #b5883e;
+  --link: #2f4a3a;
+  --danger: #b03a2e;
+  --wa: #25d366;
+  --badge-bg: #eef1ec;
+  --drop-bg: #fbfaf7;
+  --drop-active: #eef3ee;
+  --topbar-bg: var(--brand);
+  --topbar-text: #ffffff;
+  --hero-bg: var(--brand);
+  --hero-text: #ffffff;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow: none;
+  --font: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-head: var(--font);
+  --head-weight: 700;
+  --head-spacing: 0;
+}
+
+/* Design 2: Sport – modern, hell, Marineblau + Orange */
+[data-design="sport"] {
+  --bg: #f3f5f8;
+  --card: #ffffff;
+  --surface-2: #f1f4f9;
+  --text: #0f1b2d;
+  --muted: #5b6678;
+  --line: #e2e7ef;
+  --brand: #0f2a4a;
+  --brand-2: #1b3d66;
+  --accent: #ff6b2c;
+  --link: #1d5fd1;
+  --badge-bg: #fff0e8;
+  --drop-bg: #f8fafc;
+  --drop-active: #fff4ee;
+  --topbar-bg: #ffffff;
+  --topbar-text: #0f2a4a;
+  --hero-bg: #0f2a4a;
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 1px 2px rgba(15, 27, 45, .06), 0 6px 20px rgba(15, 27, 45, .06);
+  --head-weight: 800;
+  --head-spacing: -.02em;
+}
+
+/* Design 3: Premium – dunkel, Schwarz + Gold, Serifen-Überschriften */
+[data-design="premium"] {
+  --bg: #0e0e0f;
+  --card: #17171a;
+  --surface-2: #202024;
+  --input-bg: #111113;
+  --text: #f1ece2;
+  --muted: #a29d92;
+  --line: #2e2d2b;
+  --brand: #c9a75e;
+  --brand-2: #dcbd78;
+  --on-brand: #141414;
+  --accent: #c9a75e;
+  --link: #e0c07c;
+  --danger: #e0705f;
+  --badge-bg: #2a2620;
+  --drop-bg: #131315;
+  --drop-active: #221e16;
+  --topbar-bg: #000000;
+  --topbar-text: #e6cf9a;
+  --hero-bg: #000000;
+  --hero-text: #f1ece2;
+  --radius: 6px;
+  --radius-sm: 4px;
+  --font-head: Charter, "Bitstream Charter", "Iowan Old Style", Georgia, serif;
+  --head-weight: 600;
+  --head-spacing: .01em;
+}
+
+/* ===== Grundlagen ===== */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--link); }
+h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; font-family: var(--font-head); font-weight: var(--head-weight); letter-spacing: var(--head-spacing); }
+.container { max-width: 960px; margin: 0 auto; padding: 16px; }
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; background: var(--topbar-bg); color: var(--topbar-text); border-bottom: 1px solid var(--line); }
+.topbar a { color: var(--topbar-text); text-decoration: none; font-weight: 600; font-family: var(--font-head); }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-bottom: 16px; box-shadow: var(--shadow); }
+.muted { color: var(--muted); }
+.small { font-size: .875rem; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.form-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+label { display: block; font-size: .875rem; font-weight: 600; margin-bottom: 4px; }
+input, textarea, select {
+  width: 100%; font: inherit; padding: 10px 12px; border: 1px solid var(--line);
+  border-radius: var(--radius-sm); background: var(--input-bg); color: var(--text);
+}
+input:focus, textarea:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+fieldset { border: 1px solid var(--line); border-radius: var(--radius-sm); }
+textarea { min-height: 90px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 10px 16px; border-radius: var(--radius-sm); border: 1px solid var(--brand);
+  background: var(--brand); color: var(--on-brand); font: inherit; font-weight: 600;
+  cursor: pointer; text-decoration: none; min-height: 44px;
+}
+.btn:hover { background: var(--brand-2); }
+.btn.secondary { background: transparent; color: var(--text); border-color: var(--line); }
+.btn.secondary:hover { border-color: var(--brand); }
+.btn.danger { background: transparent; color: var(--danger); border-color: var(--danger); }
+.btn.wa { background: var(--wa); border-color: var(--wa); color: #fff; }
+.btn.small { padding: 6px 10px; min-height: 34px; font-size: .875rem; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.topbar .btn.secondary { color: var(--topbar-text); border-color: currentColor; }
+.badge { display: inline-block; font-size: .75rem; padding: 2px 8px; border-radius: 999px; background: var(--badge-bg); color: var(--accent); font-weight: 600; }
+.error { color: var(--danger); }
+
+/* Design "sport": Hauptknopf in Orange, damit er heraussticht */
+[data-design="sport"] .btn:not(.secondary):not(.danger):not(.wa) { background: var(--accent); border-color: var(--accent); }
+[data-design="sport"] .btn:not(.secondary):not(.danger):not(.wa):hover { background: #e85a1c; }
+
+/* Drag & Drop */
+.dropzone {
+  border: 2px dashed var(--line); border-radius: var(--radius); padding: 18px;
+  text-align: center; background: var(--drop-bg); cursor: pointer; transition: .15s;
+}
+.dropzone.active { border-color: var(--accent); background: var(--drop-active); }
+.progress { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; }
+.progress > div { height: 100%; background: var(--accent); transition: width .2s; }
+
+/* Medien */
+.media-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+.media-item { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: hidden; display: flex; flex-direction: column; }
+.media-item img, .media-item video { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: #222; display: block; }
+.media-item .meta { padding: 8px; font-size: .8rem; display: flex; flex-direction: column; gap: 6px; }
+.media-item .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file-icon { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; background: var(--surface-2); text-decoration: none; }
+
+/* Öffentliche Seite (Kundenseite) */
+.hero { position: relative; background: var(--hero-bg); color: var(--hero-text); }
+.hero img { width: 100%; max-height: 60vh; object-fit: cover; display: block; }
+.hero .hero-text { padding: 16px; }
+.hero h1 { color: var(--hero-text); }
+[data-design="premium"] .hero h1 { color: #e6cf9a; }
+.facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+.facts div { background: var(--surface-2); border-radius: var(--radius-sm); padding: 8px 10px; }
+.facts dt { font-size: .75rem; color: var(--muted); }
+.facts dd { margin: 0; font-weight: 600; }
+.pedigree { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.pedigree > div { background: var(--surface-2); border-radius: var(--radius-sm); padding: 8px 10px; }
+.tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; }
+.tabs a { white-space: nowrap; }
