@@ -106,7 +106,7 @@ create policy "owner manages profile" on public.profiles
 drop policy if exists "public reads profile of sellers" on public.profiles;
 create policy "public reads profile of sellers" on public.profiles
   for select using (
-    exists (select 1 from public.horses h where h.owner_id = id and h.is_public = true)
+    exists (select 1 from public.horses h where h.owner_id = profiles.id and h.is_public = true)
   );
 
 drop trigger if exists profiles_touch on public.profiles;
