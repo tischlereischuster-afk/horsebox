@@ -122,3 +122,8 @@ values ('horse-media', 'horse-media', false, 5368709120)
 on conflict (id) do nothing;
 -- Hinweis: Für den Bucket braucht es keine weiteren Regeln. Hoch- und Herunterladen
 -- läuft über signierte Links, die nur unser Server (mit dem service_role Schlüssel) erstellt.
+
+-- Rechte für die Daten-API (neue Supabase-Projekte vergeben diese nicht automatisch)
+grant usage on schema public to anon, authenticated, service_role;
+grant select, insert, update, delete on public.horses, public.media, public.profiles to authenticated, service_role;
+grant select on public.horses, public.media, public.profiles to anon;

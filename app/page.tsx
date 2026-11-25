@@ -17,7 +17,7 @@ export default function Home() {
           </p>
           <div className="row">
             <Link className="btn" href="/dashboard">Zu meinen Pferden</Link>
-            <Link className="btn secondary" href="/login">Konto anlegen</Link>
+            <Link className="btn secondary" href="/login?mode=signup">Konto anlegen</Link>
           </div>
         </div>
       </div>
