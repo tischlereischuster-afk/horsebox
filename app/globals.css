@@ -202,3 +202,9 @@ textarea { min-height: 90px; }
 .pedigree > div { background: var(--surface-2); border-radius: var(--radius-sm); padding: 8px 10px; }
 .tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; }
 .tabs a { white-space: nowrap; }
+
+/* Kontenverwaltung (nur Admin) */
+.account { margin-bottom: 12px; }
+.account-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+.account-facts { display: flex; gap: 6px 16px; flex-wrap: wrap; margin-top: 8px; color: var(--muted); }
+.badge-danger { background: var(--danger); color: #fff; }
