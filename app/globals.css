@@ -131,6 +131,22 @@ textarea { min-height: 90px; }
 .topbar .btn.secondary { color: var(--topbar-text); border-color: currentColor; }
 .topbar { flex-wrap: wrap; }
 
+/* Leiste für den Verkäufer auf der Kundenansicht */
+.owner-bar {
+  position: sticky; top: 0; z-index: 50; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 10px 16px; padding-top: max(10px, env(safe-area-inset-top));
+  background: var(--topbar-bg); color: var(--topbar-text); border-bottom: 1px solid var(--line); box-shadow: var(--shadow);
+}
+.owner-bar .btn { min-height: 48px; font-size: 1rem; }
+.owner-bar .owner-back { background: var(--card); color: var(--text); border-color: var(--card); }
+.owner-bar .btn.secondary { color: var(--topbar-text); border-color: currentColor; margin-left: auto; }
+.owner-bar .owner-hint { font-size: .875rem; opacity: .85; }
+@media (max-width: 560px) {
+  .owner-bar { flex-wrap: nowrap; }
+  .owner-bar .owner-back { flex: 1 1 auto; }
+  .owner-bar .owner-hint { display: none; }
+}
+
 /* Anmeldeseite */
 .auth-wrap { min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 0 0 32px; background: var(--bg); }
 .auth-logo { display: block; width: 100%; text-align: center; color: var(--hero-text); background: var(--hero-bg); padding: 56px 16px 84px; }
@@ -186,3 +202,9 @@ textarea { min-height: 90px; }
 .pedigree > div { background: var(--surface-2); border-radius: var(--radius-sm); padding: 8px 10px; }
 .tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; }
 .tabs a { white-space: nowrap; }
+
+/* Kontenverwaltung (nur Admin) */
+.account { margin-bottom: 12px; }
+.account-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+.account-facts { display: flex; gap: 6px 16px; flex-wrap: wrap; margin-top: 8px; color: var(--muted); }
+.badge-danger { background: var(--danger); color: #fff; }

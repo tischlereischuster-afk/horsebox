@@ -1,4 +1,5 @@
 import type { Horse } from "@/lib/types";
+import LinkLookup from "@/app/components/LinkLookup";
 
 type Props = {
   action: (fd: FormData) => Promise<void>;
@@ -62,19 +63,18 @@ export default function HorseForm({ action, horse = {}, submitLabel }: Props) {
       </fieldset>
 
       <div className="form-grid">
-        <div>
-          <label htmlFor="rimondo_url">Link zu Rimondo</label>
-          <input id="rimondo_url" name="rimondo_url" type="text" inputMode="url" placeholder="https://rimondo.com/…" defaultValue={f("rimondo_url")} />
-        </div>
-        <div>
-          <label htmlFor="fn_url">Link zur FN / Abstammung</label>
-          <input id="fn_url" name="fn_url" type="text" inputMode="url" placeholder="https://…" defaultValue={f("fn_url")} />
-        </div>
+        <LinkLookup id="rimondo_url" label="Link zu Rimondo" placeholder="https://rimondo.com/…" defaultValue={String(f("rimondo_url"))}
+          site="rimondo.com" siteLabel="Rimondo" homepage="https://www.rimondo.com/" />
+        <LinkLookup id="fn_url" label="Link zur FN / Abstammung" placeholder="https://…" defaultValue={String(f("fn_url"))}
+          site="pferd-aktuell.de" siteLabel="der FN" homepage="https://www.pferd-aktuell.de/" />
         <div>
           <label htmlFor="price_info">Preis</label>
           <input id="price_info" name="price_info" placeholder="z. B. auf Anfrage" defaultValue={f("price_info")} />
         </div>
       </div>
+      <p className="small muted" style={{ margin: "-8px 0 0" }}>
+        Tipp: „Suchen“ öffnet die Seite mit dem Namen des Pferdes. Dort das Pferd anklicken, die Adresse kopieren und hier mit „Link einfügen“ übernehmen.
+      </p>
 
       <div>
         <label htmlFor="description">Beschreibung</label>

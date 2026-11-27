@@ -7,6 +7,8 @@ import MediaTile from "@/app/components/MediaTile";
 import DownloadAll from "@/app/components/DownloadAll";
 import SellerCard from "@/app/components/SellerCard";
 import { siteUrl } from "@/lib/slug";
+import { createClient } from "@/lib/supabase/server";
+import Link from "next/link";
 
 // Immer frisch laden, damit die zeitlich begrenzten Links gültig sind
 export const dynamic = "force-dynamic";
@@ -45,8 +47,19 @@ export default async function PublicHorsePage({ params }: Props) {
   ];
   const allDownloads = media.map((m) => m.downloadUrl).filter((u): u is string => !!u);
 
+  // Ist der Verkäufer selbst eingeloggt? Dann oben eine Leiste mit dem Weg zurück zeigen (Kunden sehen sie nicht).
+  const { data: auth } = await (await createClient()).auth.getUser().catch(() => ({ data: { user: null } }));
+  const isOwner = auth.user?.id === horse.owner_id;
+
   return (
     <main>
+      {isOwner && (
+        <div className="owner-bar">
+          <Link className="btn owner-back" href="/dashboard">← Zurück zur Übersicht</Link>
+          <span className="owner-hint">So sehen deine Kunden das Pferd</span>
+          <Link className="btn secondary" href={`/dashboard/${horse.id}`}>Bearbeiten</Link>
+        </div>
+      )}
       <div className="hero">
         {cover?.viewUrl && (
           // eslint-disable-next-line @next/next/no-img-element
@@ -113,7 +126,7 @@ export default async function PublicHorsePage({ params }: Props) {
         <SellerCard seller={data.seller} horseName={horse.name} pageUrl={`${siteUrl()}/p/${horse.slug}`} />
 
         {media.length === 0 && <p className="muted">Für dieses Pferd wurden noch keine Dateien hochgeladen.</p>}
-        <p className="small muted" style={{ textAlign: "center", margin: "32px 0" }}>Erstellt mit Horsebox</p>
+        <p className="small muted" style={{ textAlign: "center", margin: "32px 0" }}>Erstellt mit <Link href="/" className="muted">Horsebox</Link></p>
       </div>
     </main>
   );

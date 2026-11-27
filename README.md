@@ -134,6 +134,8 @@ dann dorthin hochladen, oder du lädst den Ordner selbst hoch.
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `SUPABASE_SERVICE_ROLE_KEY` (geheim!)
    - `NEXT_PUBLIC_SITE_URL` = die spätere Adresse, z. B. `https://horsebox.vercel.app`
+   - `ADMIN_EMAILS` = deine E-Mail-Adresse. Damit siehst du oben den Knopf **Konten** und kannst alle
+     registrierten Konten sehen, sperren oder löschen. Mehrere Adressen mit Komma trennen.
 3. **Deploy** klicken. Nach 1–2 Minuten ist die App online.
 4. Wenn du Werte änderst: in Vercel **neu deployen** (die Werte werden beim Bauen eingesetzt).
 5. Eigene Domain (z. B. `pferde.deinname.de`): in Vercel unter **Settings → Domains**, danach
