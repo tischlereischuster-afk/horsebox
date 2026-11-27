@@ -31,7 +31,7 @@ export default function ShareBox({ url, name }: { url: string; name: string }) {
         </a>
         <button className="btn secondary" type="button" onClick={copy}>{copied ? "Kopiert ✓" : "Link kopieren"}</button>
         <button className="btn secondary" type="button" onClick={nativeShare}>Teilen …</button>
-        <a className="btn secondary" href={url} target="_blank" rel="noreferrer">Kundenansicht öffnen</a>
+        <a className="btn secondary" href={url}>Kundenansicht öffnen</a>
       </div>
     </div>
   );

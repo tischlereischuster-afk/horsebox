@@ -6,6 +6,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <div className="topbar">
         <Link className="btn small secondary" href="/dashboard">🐴 Meine Pferde</Link>
         <div className="row">
+          <Link className="btn small secondary" href="/dashboard#einladen">Einladen</Link>
           <Link className="btn small secondary" href="/dashboard/profil">Mein Profil</Link>
           <form action="/auth/signout" method="post">
             <button className="btn small secondary" type="submit">Abmelden</button>

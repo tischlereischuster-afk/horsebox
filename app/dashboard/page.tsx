@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { horseSubtitle, type Horse } from "@/lib/types";
+import { siteUrl } from "@/lib/slug";
+import InviteBox from "@/app/components/InviteBox";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -33,6 +35,10 @@ export default async function DashboardPage() {
             </p>
           </Link>
         ))}
+      </div>
+
+      <div style={{ marginTop: 24 }}>
+        <InviteBox url={`${siteUrl()}/login?mode=signup`} />
       </div>
     </>
   );
